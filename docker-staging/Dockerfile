@@ -1,4 +1,4 @@
 FROM scratch
-ADD ./2019-07-10-raspbian-buster-lite.tar.gz /
+ADD ./rootfs.tar.gz /
+ENV QEMU_CPU=cortex-a7
 CMD ["/bin/bash"]
-
