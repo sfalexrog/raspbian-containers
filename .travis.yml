@@ -16,7 +16,7 @@ script:
   - docker run --rm "sfalexrog/raspbian:${RELEASE_DIST}" /bin/sh -c "echo 'Hello from Raspbian'; uname -a"
 after_script:
   - >
-    if [ "${TRAVIS_BRANCH}" == "master"]; then
+    if [ "${TRAVIS_BRANCH}" == "master" ]; then
       echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
       docker tag "sfalexrog/raspbian:${RELEASE_DIST}" "sfalexrog/raspbian:${RELEASE_DIST}-${RELEASE_DATE}"
       docker push "sfalexrog/raspbian:${RELEASE_DIST}"
