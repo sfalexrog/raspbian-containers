@@ -1,0 +1,11 @@
+sudo: required
+dist: bionic
+language: generic
+services:
+  - docker
+
+before_script:
+  - docker pull sfalexrog/qemu-register:v4.1.0
+script:
+  - docker run --rm --privileged sfalexrog/qemu-register:v4.1.0
+  - sudo ./build-raspbian.sh
