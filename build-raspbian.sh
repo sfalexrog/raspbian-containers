@@ -24,9 +24,9 @@ echo "Downloading image from ${RPI_IMAGE}"
 
 curl --location ${RPI_IMAGE} --fail --output "${RPI_IMAGE_NAME}.zip"
 
-unzip ${RPI_IMAGE_NAME}
+unzip "${RPI_IMAGE_NAME}.zip"
 
-echo "Mounting ${RPI_IMG_FILE}"
+echo "Mounting ${RPI_IMAGE_NAME}.img"
 
 LODEV=$(losetup --find --read-only --partscan --show "${RPI_IMAGE_NAME}.img")
 
