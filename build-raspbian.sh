@@ -44,7 +44,7 @@ mount -o ro ${LODEV}p2 ./rpi
 
 echo "Packing rootfs"
 
-tar -C ./rpi -czpf "${RPI_IMAGE_NAME}.tar.gz" --numeric-owner .
+tar -C ./rpi --exclude='./lib/modules' -czpf "${RPI_IMAGE_NAME}.tar.gz" --numeric-owner .
 
 echo "Unmounting the image"
 
