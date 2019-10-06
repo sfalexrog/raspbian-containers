@@ -14,7 +14,7 @@ before_script:
 script:
   - docker run --rm --privileged sfalexrog/qemu-register:v4.1.0
   - sudo ./build-raspbian.sh
-  - docker run --rm "sfalexrog/raspbian:${RELEASE_DIST}" /bin/sh -c "echo 'Hello from Raspbian'; uname -a"
+  - docker run --rm "sfalexrog/raspbian:${RELEASE_DIST}-${RELEASE_DATE}" /bin/sh -c "echo 'Hello from Raspbian'; uname -a"
 after_script:
   - >
     if [ "${TRAVIS_BRANCH}" == "master" ]; then
