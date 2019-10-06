@@ -6,6 +6,9 @@ RPI_PREFIX=raspbian_lite
 # Raspbian release dates are somewhat inconsistent
 
 case "${RELEASE_DATE}" in
+    "2019-09-30")
+        RPI_IMAGE_NAME="2019-09-26-raspbian-buster-lite"
+        ;;
     "2019-07-12")
         RPI_IMAGE_NAME="2019-07-10-raspbian-buster-lite"
         ;;
@@ -56,4 +59,4 @@ echo "Generating container"
 
 mv "${RPI_IMAGE_NAME}.tar.gz" docker-staging/rootfs.tar.gz
 cd docker-staging
-docker build --rm --tag="sfalexrog/raspbian:${RELEASE_DIST}" .
+docker build --rm --tag="sfalexrog/raspbian:${RELEASE_DIST}-${RELEASE_DATE}" .
