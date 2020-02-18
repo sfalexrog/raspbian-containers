@@ -6,6 +6,9 @@ RPI_PREFIX=raspbian_lite
 # Raspbian release dates are somewhat inconsistent
 
 case "${RELEASE_DATE}" in
+    "2020-02-14")
+        RPI_IMAGE_NAME="2020-02-13-raspbian-buster-lite"
+        ;;
     "2019-09-30")
         RPI_IMAGE_NAME="2019-09-26-raspbian-buster-lite"
         ;;
