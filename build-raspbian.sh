@@ -6,6 +6,12 @@ RPI_PREFIX=raspbian_lite
 # Raspbian release dates are somewhat inconsistent
 
 case "${RELEASE_DATE}" in
+    "2020-08-24")
+        RPI_IMAGE_NAME="2020-08-20-raspios-buster-arm64-lite"
+        RPI_PREFIX="raspios_lite_arm64"
+        RPI_BASE_URL="https://downloads.raspberrypi.org/raspios_lite_arm64/images"
+        RELEASE_OS=${RELEASE_OS:-raspios}
+        ;;
     "2020-02-14")
         RPI_IMAGE_NAME="2020-02-13-raspbian-buster-lite"
         ;;
@@ -22,6 +28,8 @@ case "${RELEASE_DATE}" in
         echo "Unsupported release date: ${RELEASE_DATE}"
         exit 1
 esac
+
+RELEASE_OS=${RELEASE_OS:-raspbian}
 
 RPI_FOLDER="${RPI_PREFIX}-${RELEASE_DATE}"
 RPI_IMAGE="${RPI_BASE_URL}/${RPI_FOLDER}/${RPI_IMAGE_NAME}.zip"
@@ -62,4 +70,4 @@ echo "Generating container"
 
 mv "${RPI_IMAGE_NAME}.tar.gz" docker-staging/rootfs.tar.gz
 cd docker-staging
-docker build --rm --tag="sfalexrog/raspbian:${RELEASE_DIST}-${RELEASE_DATE}" .
+docker build --rm --tag="sfalexrog/${RELEASE_OS}:${RELEASE_DIST}-${RELEASE_DATE}" .

@@ -5,10 +5,7 @@ services:
   - docker
 
 env:
-  - RELEASE_DIST=stretch RELEASE_DATE=2019-04-09
-  - RELEASE_DIST=buster RELEASE_DATE=2019-07-12
-  - RELEASE_DIST=buster RELEASE_DATE=2019-09-30
-  - RELEASE_DIST=buster RELEASE_DATE=2020-02-14
+  - RELEASE_OS=raspios RELEASE_DIST=buster RELEASE_DATE=2020-08-24
 
 before_script:
   - docker pull sfalexrog/qemu-register:v4.1.0
@@ -20,5 +17,5 @@ after_script:
   - >
     if [ "${TRAVIS_BRANCH}" == "master" ]; then
       echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-      docker push "sfalexrog/raspbian:${RELEASE_DIST}-${RELEASE_DATE}"
+      docker push "sfalexrog/${RELEASE_OS}:${RELEASE_DIST}-${RELEASE_DATE}"
     fi
