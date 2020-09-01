@@ -12,8 +12,8 @@ before_script:
 script:
   - docker run --rm --privileged sfalexrog/qemu-register:v4.1.0
   - sudo ./build-raspbian.sh
-  - docker run --rm "sfalexrog/raspbian:${RELEASE_DIST}-${RELEASE_DATE}" /bin/sh -c "echo 'Hello from Raspbian'; uname -a"
-after_script:
+  - docker run --rm "sfalexrog/${RELEASE_OS}:${RELEASE_DIST}-${RELEASE_DATE}" /bin/sh -c "echo 'Hello from Raspbian'; uname -a"
+after_success:
   - >
     if [ "${TRAVIS_BRANCH}" == "master" ]; then
       echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
